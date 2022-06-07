@@ -66,19 +66,25 @@ var romanToInt = function(s) {
     let total = 0;
 
     for(let len = 0; len < s.length; len++){
-        let single = s.charAt(len);
-        let second = "";
-        if(len < s.length - 1){
-            second = single + s.charAt(len + 1);
-        }
-        if(map.has(second)){
-            total += map.get(second);
-            len++;
+        if(len < s.length - 1 && s[i] < s[i + 1]){
+            total -= s[i]
         }
         else{
-            total += map.get(single);
-
+            total += s[i]
         }
+        // let single = s.charAt(len);
+        // let second = "";
+        // if(len < s.length - 1){
+        //     second = single + s.charAt(len + 1);
+        // }
+        // if(map.has(second)){
+        //     total += map.get(second);
+        //     len++;
+        // }
+        // else{
+        //     total += map.get(single);
+
+        // }
 
     }
     return total;
