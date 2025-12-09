@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+       /* 填写样式 */
+        a {
+    color: #00bc9b;
+}
+    </style>
+</head>
+
+<body>
+    <!-- 填写标签 -->
+    <div id="jsContainer">
+这里会给出一段随机文本，可能包含一些链接，比如https://www.baidu.com，或者 www.baidu.com?from=onlineExam，如果出现链接文本，请给该链接文本加上链接标签，用户点击后能直接在新窗口中打开该链接。
+</div>
+    <script type="text/javascript">
+        // 填写JavaScript
+        function link() {
+    const elm = document.querySelector('#jsContainer');
+    let reg = /(https?:\/\/)?(www\.\w+(\.(com|cn))*([?]\w+=\w*(&\w+=\w*)*)?(#\w+)?)/g
+    elm.innerHTML = elm.innerHTML.replace(reg, function(...args) {
+        if(args[1]) {
+            return `<a target="_blank" href="${args[1]}${args[2]}">${args[0]}</a>`;
+        } else {
+            return `<a target="_blank" href="http://${args[2]}">${args[0]}</a>`;
+        }
+    })
+}
+    </script>
+</body>
+
+</html>
